@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb+srv://Rangeet_demo:Qwerty133@cluster0.5sfyb.mongodb.net/todolistDB", { useNewUrlParser: true });
 
-const itemsSchema = new mongoose.Schema ({ 
+const itemsSchema = new mongoose.Schema ({
 	name: String
 
 });
@@ -144,9 +144,15 @@ app.post("/work", function(req, res){
 
 app.get("/about", function(req, res){
 	res.render("about");
-})
+});
 
-app.listen(3000, function(){
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+
+app.listen(port, function(){
 
 console.log("Server runnning on port 3000");
 });
